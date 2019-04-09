@@ -2,10 +2,11 @@
   "name": "licentanodeproxy",
   "version": "1.0.0",
   "description": "",
-  "main": "\u001b[A\u001b[B",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "dev": "node index.js",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
