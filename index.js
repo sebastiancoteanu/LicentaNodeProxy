@@ -1,26 +1,33 @@
 const express = require('express');
 const request = require('request');
-const server_port = process.env.PORT || 8080;;
-const heroku_api_key = process.env.IPTOEARTH_API_KEY;
+const proxy = require('express-http-proxy');
+
+const server_port = process.env.PORT || 8080;
 const places_api_key = process.env.PLACES_API_KEY;
+const quotaguardstatic_url = process.env.QUOTAGUARDSTATIC_URL;
+
+var options = {
+    proxy: quotaguardstatic_url,
+};
 
 var app = express();
+app.use('/proxy', proxy(quotaguardstatic_url))
 
 app.listen(server_port, function () {
-    console.log(`${server_port}`);
-    console.log(`${heroku_api_key}`);
-    console.log(`${places_api_key}`);
+    console.log("Server is running");
 });
 
 // Example route
-app.get('/places/:redirectUrl',  (req, res) => {
-    const redirectUrl = req.query.redirectUrl;
-    res.send("ssss");
-    // request(`${redirectUrl}${PLACES_API_KEY}`,  (error, response, body) => {
-    //     if(error) {
-    //         res.send('An erorr occured')
-    //     } else {
-    //         res.send(body)
-    //     }
-    // });
+app.get('/places',  (req, res) => {
+    const baseUrl = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?';
+    const location = req.query.location;
+    const radius = 1500;
+    const redirectUrl = `${baseUrl}location=${location}&radius=${radius}&type=restaurant&key=${places_api_key}`;
+    request(redirectUrl, options, (error, response, body) => {
+        if(error) {
+            res.send('An error occured')
+        } else {
+            res.send(body)
+        }
+    });
 });
