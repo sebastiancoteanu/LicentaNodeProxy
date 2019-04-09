@@ -1,15 +1,16 @@
-var express = require('express');
-var request = require('request');
-var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
-var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
+const express = require('express');
+const request = require('request');
+const server_port = process.env.PORT || 8080;;
+const heroku_api_key = process.env.IPTOEARTH_API_KEY;
+const places_api_key = process.env.PLACES_API_KEY;
 
 var app = express();
 
-app.listen(server_port, server_ip_address, function () {
-    console.log(`Example app listening on port !`);
+app.listen(server_port, function () {
+    console.log(`${server_port}`);
+    console.log(`${heroku_api_key}`);
+    console.log(`${places_api_key}`);
 });
-
-const PLACES_API_KEY = "AIzaSyCJP_udpSeKZl2T5OZTo-z7WadAWS_Ckd8";
 
 // Example route
 app.get('/places/:redirectUrl',  (req, res) => {
