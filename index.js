@@ -20,9 +20,9 @@ app.listen(server_port, function () {
 // test route 
 app.get('/places',  (req, res) => {
     const baseUrl = 'https://jsonplaceholder.typicode.com/todos/';
-    const { todoNo } = req.query;
-    const redirectUrl = `${baseUrl}${todoNo}`;
-    console.log(redirectUrl);
+    const { location } = req.query;
+    const redirectUrl = `${baseUrl}${location[0]}`;    
+    console.log(location);
     request(redirectUrl, options, (error, response, body) => {
         if(error) {
             res.send('An error occured')
