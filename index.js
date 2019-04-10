@@ -17,12 +17,12 @@ app.listen(server_port, function () {
     console.log("Server is running");
 });
 
-// Example route
+// test route 
 app.get('/places',  (req, res) => {
-    const baseUrl = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?';
-    const location = req.query.location;
-    const radius = 1500;
-    const redirectUrl = `${baseUrl}location=${location}&radius=${radius}&type=restaurant&key=${places_api_key}`;
+    const baseUrl = 'https://jsonplaceholder.typicode.com/todos/';
+    const { todoNo } = req.query;
+    const redirectUrl = `${baseUrl}${todoNo}`;
+    console.log(redirectUrl);
     request(redirectUrl, options, (error, response, body) => {
         if(error) {
             res.send('An error occured')
@@ -31,3 +31,18 @@ app.get('/places',  (req, res) => {
         }
     });
 });
+
+// main route
+// app.get('/places',  (req, res) => {
+//     const baseUrl = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?';
+//     const location = req.query.location;
+//     const radius = 1500;
+//     const redirectUrl = `${baseUrl}location=${location}&radius=${radius}&type=restaurant&key=${places_api_key}`;
+//     request(redirectUrl, options, (error, response, body) => {
+//         if(error) {
+//             res.send('An error occured')
+//         } else {
+//             res.send(body)
+//         }
+//     });
+// });
