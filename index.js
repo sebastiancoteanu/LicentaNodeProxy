@@ -27,7 +27,7 @@ app.get('/places',  (req, res) => {
         if(error) {
             res.send('An error occured')
         } else {
-            res.send(mockJson);
+            res.send(mockData);
         }
     });
 });
