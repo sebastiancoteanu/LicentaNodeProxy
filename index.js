@@ -1,7 +1,7 @@
 const express = require('express');
 const request = require('request');
 const proxy = require('express-http-proxy');
-const mockData = require('./mockData');
+const data = require('./mockData');
 
 const server_port = process.env.PORT || 8080;
 const places_api_key = process.env.PLACES_API_KEY;
@@ -27,7 +27,7 @@ app.get('/places',  (req, res) => {
         if(error) {
             res.send('An error occured')
         } else {
-            res.send(mockData);
+            res.send(data.mockData);
         }
     });
 });
