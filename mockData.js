@@ -38,6 +38,7 @@ const mockData = {
           "global_code": "8GP8C3RX+QQ"
         },
         "rating": 4.1,
+        "price_level": 4,
         "reference": "ChIJyxxm507_sUARWzWc4dDySNk",
         "scope": "GOOGLE",
         "types": [
@@ -243,7 +244,7 @@ const mockData = {
           "compound_code": "C4P9+36 Bucharest, Romania",
           "global_code": "8GP8C4P9+36"
         },
-        "price_level": 2,
+        "price_level": 3,
         "rating": 3.9,
         "reference": "ChIJ8VFAqzr_sUAR3CA7pPFP3Ys",
         "scope": "GOOGLE",
@@ -294,7 +295,7 @@ const mockData = {
           "compound_code": "C4J2+W2 Bucharest, Romania",
           "global_code": "8GP8C4J2+W2"
         },
-        "price_level": 2,
+        "price_level": 1,
         "rating": 4.3,
         "reference": "ChIJM5g_jj__sUARVh11WU_h-nQ",
         "scope": "GOOGLE",
